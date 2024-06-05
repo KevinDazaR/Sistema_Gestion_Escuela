@@ -34,7 +34,8 @@ namespace PruebaLinus.Services.Students
             {
                 Names = studentDTO.Names,
                 BirthDate = studentDTO.BirthDate,
-                Address = studentDTO.Address
+                Address = studentDTO.Address,
+                Email = studentDTO.Email
             };
             _context.Students.Add(student);
             _context.SaveChanges();
