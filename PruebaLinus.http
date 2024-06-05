@@ -1,0 +1,6 @@
+@PruebaLinus_HostAddress = http://localhost:5170
+
+GET {{PruebaLinus_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
