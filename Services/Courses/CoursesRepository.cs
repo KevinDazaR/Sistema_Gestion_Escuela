@@ -21,12 +21,12 @@ namespace PruebaLinus.Services.Courses
         
         public IEnumerable<Course> GetAll()
         {
-            return _context.Courses.ToList();
+            return _context.Courses.Include(t => t.Teachers).ToList();
         }
 
         public Course GetById(int id)
         {
-            return _context.Courses.Find(id);
+            return _context.Courses.Include(t=>t.Teachers).FirstOrDefault(t => t.Id == id);
         }
         public void Add(CourseCreateDTO courseDTO)
         {

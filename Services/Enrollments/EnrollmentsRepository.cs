@@ -21,12 +21,12 @@ namespace PruebaLinus.Services.Enrollments
         
         public IEnumerable<Enrollment> GetAll()
         {
-            return _context.Enrollments.ToList();
+            return _context.Enrollments.Include(s => s.Students).Include(c => c.Courses).ToList();
         }
 
         public Enrollment GetById(int id)
         {
-            return _context.Enrollments.Find(id);
+            return _context.Enrollments.Include(x => x.Students).Include(x => x.Courses).FirstOrDefault(x => x.Id == id);
         }
         public void Add(EnrollmentCreateDTO enrollmentDTO)
         {
