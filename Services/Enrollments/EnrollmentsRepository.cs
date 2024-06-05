@@ -4,19 +4,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using PruebaLinus.Data;
 using PruebaLinus.Models;
+using PruebaLinus.DTOs;
 using Microsoft.EntityFrameworkCore;
 using PruebaLinus.Services.Enrollments;
-using PruebaLinus.DTOs;
+using PruebaLinus.Services.Emails;
 
 namespace PruebaLinus.Services.Enrollments
 {
     public class EnrollmentsRepository : IEnrollmentsRepository
     {
         private readonly BaseContext _context;
+        private readonly IEmailService _emailService;
 
-        public EnrollmentsRepository(BaseContext context)
+
+        public EnrollmentsRepository(BaseContext context, IEmailService emailService)
         {
             _context = context;
+            _emailService = emailService;
         }
         
         public IEnumerable<Enrollment> GetAll()
@@ -28,6 +32,7 @@ namespace PruebaLinus.Services.Enrollments
         {
             return _context.Enrollments.Include(x => x.Students).Include(x => x.Courses).FirstOrDefault(x => x.Id == id);
         }
+        
         public void Add(EnrollmentCreateDTO enrollmentDTO)
         {
             var enrollment = new Enrollment
@@ -37,8 +42,24 @@ namespace PruebaLinus.Services.Enrollments
                 CourseId = enrollmentDTO.CourseId,
                 Status = enrollmentDTO.Status
             };
+
             _context.Enrollments.Add(enrollment);
             _context.SaveChanges();
+
+            var student = _context.Students.FirstOrDefault(s => s.Id == enrollmentDTO.StudentId);
+            var course = _context.Courses.Find(enrollmentDTO.CourseId);
+
+            Console.WriteLine("------student - "+student.Email);
+            Console.WriteLine("------course -"+course);
+            Console.WriteLine("------enrollmentDTO -"+enrollmentDTO.Date);
+
+            if (student!= null && course!= null)
+            {
+                var subject = "Escuela Kevin Daza";
+                var mensajePaciente = $"Hola, Sr@ {student.Names},\n Recuerda que tienes una nuevo curso programado para el {enrollmentDTO.Date}\n \n \n \n \n Feliz noche!";
+
+                _emailService.SendEmail(student.Email, subject, mensajePaciente);
+            }
         }
 
         public void Update(int id, EnrollmentCreateDTO enrollmentDTO)

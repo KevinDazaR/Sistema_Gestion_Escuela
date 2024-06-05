@@ -26,7 +26,7 @@ namespace PruebaLinus.Controllers.Enrollments
         {
             // if (id != pet.Id)
             // {
-            //     return BadRequest(new { message = "el Id de la Owner no coincide " });
+            //     return BadRequest(new { message = "el Id de la Enrollment no coincide " });
             // }
 
             try
@@ -37,7 +37,7 @@ namespace PruebaLinus.Controllers.Enrollments
             {
                 if (_enrollmentsRepository.GetById(id) == null)
                 {
-                    return NotFound(new { message = "Owner no encontrado" });
+                    return NotFound(new { message = "Enrollment not founded" });
                 }
                 else
                 {

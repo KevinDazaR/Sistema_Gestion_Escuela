@@ -4,7 +4,7 @@ using PruebaLinus.Services.Students;
 using PruebaLinus.Services.Teachers;
 using PruebaLinus.Services.Courses;
 using PruebaLinus.Services.Enrollments;
-// using PruebaLinus.Services.Emails;
+using PruebaLinus.Services.Emails;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +26,8 @@ builder.Services.AddScoped<ITeachersRepository, TeachersRepository>(); // Import
 builder.Services.AddScoped<ICoursesRepository, CoursesRepository>(); // Important
 builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>(); // Important
 
-// builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-// builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 var app = builder.Build();
 

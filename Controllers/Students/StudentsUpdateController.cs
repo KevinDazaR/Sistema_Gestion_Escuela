@@ -26,7 +26,7 @@ namespace PruebaLinus.Controllers.Students
         {
             // if (id != pet.Id)
             // {
-            //     return BadRequest(new { message = "el Id de la Owner no coincide " });
+            //     return BadRequest(new { message = "el Id de la Student no coincide " });
             // }
 
             try
@@ -37,7 +37,7 @@ namespace PruebaLinus.Controllers.Students
             {
                 if (_studentsRepository.GetById(id) == null)
                 {
-                    return NotFound(new { message = "Owner no encontrado" });
+                    return NotFound(new { message = "Student no encontrado" });
                 }
                 else
                 {
