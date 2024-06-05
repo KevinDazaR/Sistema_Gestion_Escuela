@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using PruebaLinus.Services.Students;
 using PruebaLinus.Services.Teachers;
 using PruebaLinus.Services.Courses;
-// using PruebaLinus.Services.Enrollments;
+using PruebaLinus.Services.Enrollments;
 // using PruebaLinus.Services.Emails;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +24,7 @@ builder.Services.AddDbContext<BaseContext>(Options =>
 builder.Services.AddScoped<IStudentsRepository, StudentsRepository>(); // Important
 builder.Services.AddScoped<ITeachersRepository, TeachersRepository>(); // Important
 builder.Services.AddScoped<ICoursesRepository, CoursesRepository>(); // Important
-// builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>(); // Important
+builder.Services.AddScoped<IEnrollmentsRepository, EnrollmentsRepository>(); // Important
 
 // builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 // builder.Services.AddTransient<IEmailService, EmailService>();
