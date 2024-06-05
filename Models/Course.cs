@@ -25,7 +25,7 @@ namespace PruebaLinus.Models
 
 
         [Required]
-        public int? Schedule { get; set; }
+        public string? Schedule { get; set; }
 
         [Required]
         [ForeignKey("TeacherId")]
