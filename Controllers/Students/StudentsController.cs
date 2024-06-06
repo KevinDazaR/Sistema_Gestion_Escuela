@@ -20,14 +20,14 @@ namespace PruebaLinus.Controllers.Students
         }
 
         [HttpGet]
-        [Route("api/students")]
+        [Route("students")]
         public IEnumerable<Student> GetAll()
         {
             return _studentsRepository.GetAll();
         }
 
         [HttpGet]
-        [Route("api/students/{id}")]
+        [Route("students/{id}")]
         public IActionResult GetById(int id)
         {
             var student = _studentsRepository.GetById(id);

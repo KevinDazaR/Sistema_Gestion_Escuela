@@ -14,5 +14,8 @@ namespace PruebaLinus.Services.Courses
         void Add(CourseCreateDTO courseDTO);
         void Update(int id, CourseCreateDTO courseDTO);
         // void Delete(int id);
+
+         //Adicional 
+        IEnumerable<Course> GetCoursesByTeacher( int id);
     }
 }

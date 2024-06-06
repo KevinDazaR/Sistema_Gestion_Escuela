@@ -63,5 +63,13 @@ namespace PruebaLinus.Services.Courses
             }
         }
 
+        //AdicionalPoint Listar todas los curso que tiene un profesor
+        public IEnumerable<Course> GetCoursesByTeacher(int id)
+        {
+            return _context.Courses.Include(c => c.Teachers).Where(c => c.TeacherId == id)
+            .ToList();
+        }
+
+
     }
 }

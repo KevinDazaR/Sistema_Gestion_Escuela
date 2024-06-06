@@ -14,5 +14,7 @@ namespace PruebaLinus.Services.Teachers
         void Add(TeacherCreateDTO teacherDTO);
         void Update(int id, TeacherCreateDTO teacherDTO);
         // void Delete(int id);
+
+
     }
 }

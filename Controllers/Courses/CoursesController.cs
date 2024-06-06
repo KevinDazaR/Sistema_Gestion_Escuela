@@ -39,5 +39,13 @@ namespace PruebaLinus.Controllers.Courses
 
             return Ok(course);
         }
+
+        [HttpGet]
+        [Route("teachers/{id}/courses")]
+        public IEnumerable<Course> GetCoursesByTeacher(int id)
+        {
+            var course = _coursesRepository.GetCoursesByTeacher(id);
+            return course;
+        }
     }
 }

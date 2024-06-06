@@ -20,7 +20,7 @@ namespace PruebaLinus.Controllers.Teachers
         }
 
         [HttpGet]
-        [Route("api/teachers")]
+        [Route("teachers")]
         public IEnumerable<Teacher> GetAll()
         {
             return _teachersRepository.GetAll();

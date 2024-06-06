@@ -59,5 +59,12 @@ namespace PruebaLinus.Services.Teachers
             }
         }
 
+         //AdicionalPoint Listar Todos los cursos que tiene un profesor 
+        public IEnumerable<Enrollment> GetEnrollmentByDate(DateTime date)
+        {
+            return _context.Enrollments.Where(e =>  e.Date == date.Date).Include(s => s.Students).Include(c => c.Courses).ToList();
+        }
+
+
     }
 }
