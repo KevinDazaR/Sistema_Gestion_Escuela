@@ -14,5 +14,8 @@ namespace PruebaLinus.Services.Enrollments
         void Add(EnrollmentCreateDTO enrollmentDTO);
         void Update(int id, EnrollmentCreateDTO enrollmentDTO);
         // void Delete(int id);
+
+        //Adicional 
+        IEnumerable<Enrollment> GetEnrollmentByDate( DateTime date);
     }
 }

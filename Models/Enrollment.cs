@@ -22,6 +22,8 @@ namespace PruebaLinus.Models
         public int? CourseId { get; set; }
         public Course ? Courses {get; set ;} /// una matricula està asociado a un unico curso especifìco
 
+        public Teacher ? Teachers {get; set ;} 
+
         [Required]
         public string? Status { get; set; }
      

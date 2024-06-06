@@ -39,5 +39,13 @@ namespace PruebaLinus.Controllers.Enrollments
 
             return Ok(enrollment);
         }
+
+        [HttpGet]
+        [Route("enrollments/{date}/date")]
+        public IEnumerable<Enrollment> GetEnrollmentByDate(DateTime date)
+        {
+            var enrollment = _enrollmentsRepository.GetEnrollmentByDate(date);
+            return enrollment;
+        }
     }
 }

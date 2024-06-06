@@ -78,5 +78,11 @@ namespace PruebaLinus.Services.Enrollments
             }
         }
 
+        //AdicionalPoint Listar Matriculas en una fecha especifica
+        public IEnumerable<Enrollment> GetEnrollmentByDate(DateTime date)
+        {
+            return _context.Enrollments.Where(e =>  e.Date == date.Date).Include(s => s.Students).Include(c => c.Courses).ToList();
+        }
+
     }
 }
