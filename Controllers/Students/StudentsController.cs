@@ -36,8 +36,16 @@ namespace PruebaLinus.Controllers.Students
             {
                 return NotFound(new{message = "Student not found, enter a valid Id"});
             }
-
+            try
+            {
+                _studentsRepository.GetById(id);
+            }
+            catch(DbUpdateConcurrencyException)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error finding the Student's Id .");
+            }
             return Ok(student);
+
         }
 
         [HttpGet]
@@ -45,6 +53,7 @@ namespace PruebaLinus.Controllers.Students
         public IEnumerable<Student> GetStudentByDateBirth(DateTime birthdate)
         {
             var student = _studentsRepository.GetStudentByDateBirth(birthdate);
+            
             return student;
         }
 
