@@ -47,5 +47,14 @@ namespace PruebaLinus.Controllers.Enrollments
             var enrollment = _enrollmentsRepository.GetEnrollmentByDate(date);
             return enrollment;
         }
+
+        [HttpGet]
+        [Route("students/{id}/enrollments")]
+        public IEnumerable<Enrollment> GetEnrollmentByStudent(int id)
+        {
+            var enrollment = _enrollmentsRepository.GetEnrollmentByStudent(id);
+            return enrollment;
+        }
     }
+    
 }

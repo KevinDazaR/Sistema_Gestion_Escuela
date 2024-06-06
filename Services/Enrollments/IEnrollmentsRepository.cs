@@ -17,5 +17,6 @@ namespace PruebaLinus.Services.Enrollments
 
         //Adicional 
         IEnumerable<Enrollment> GetEnrollmentByDate( DateTime date);
+        IEnumerable<Enrollment> GetEnrollmentByStudent( int id);
     }
 }

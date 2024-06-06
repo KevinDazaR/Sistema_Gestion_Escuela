@@ -57,5 +57,11 @@ namespace PruebaLinus.Services.Students
             }
         }
 
+         //AdicionalPoint Listar estudiante por fecha de cumpleaños
+        public IEnumerable<Student> GetStudentByDateBirth(DateTime birthdate)
+        {
+            return _context.Students.Where(s =>  s.BirthDate == birthdate.Date).ToList();
+        }
+
     }
 }

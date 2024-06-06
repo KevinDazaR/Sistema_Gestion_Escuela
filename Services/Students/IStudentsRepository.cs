@@ -14,5 +14,8 @@ namespace PruebaLinus.Services.Students
         void Add(StudentCreateDTO studentDTO);
         void Update(int id, StudentCreateDTO studentDTO);
         // void Delete(int id);
+
+        //Adicional 
+        IEnumerable<Student> GetStudentByDateBirth( DateTime birthdate);
     }
 }

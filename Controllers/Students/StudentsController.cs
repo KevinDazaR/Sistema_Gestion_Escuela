@@ -39,5 +39,14 @@ namespace PruebaLinus.Controllers.Students
 
             return Ok(student);
         }
+
+        [HttpGet]
+        [Route("students/{date}/birthday")]
+        public IEnumerable<Student> GetStudentByDateBirth(DateTime birthdate)
+        {
+            var student = _studentsRepository.GetStudentByDateBirth(birthdate);
+            return student;
+        }
+
     }
 }

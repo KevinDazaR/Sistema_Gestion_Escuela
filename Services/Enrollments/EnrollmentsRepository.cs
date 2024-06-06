@@ -84,5 +84,19 @@ namespace PruebaLinus.Services.Enrollments
             return _context.Enrollments.Where(e =>  e.Date == date.Date).Include(s => s.Students).Include(c => c.Courses).ToList();
         }
 
+          //AdicionalPoint Listar todas las matriculas que ha tenido un estudiante
+        public IEnumerable<Enrollment> GetEnrollmentByStudent(int id)
+        {
+            var search = _context.Enrollments.Include(c => c.Students).Include(c => c.Courses).Where(c => c.StudentId == id)
+            .ToList();
+
+            
+            // if(search==null)
+            // {
+            //      return "The teacher searched doesn't have listed courses yet with that Id"};
+            // }
+
+            return search;
+        }
     }
 }
